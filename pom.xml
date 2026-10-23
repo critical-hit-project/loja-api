@@ -108,11 +108,15 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-webflux</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>com.critical-hit</groupId>
 			<artifactId>lib</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/src/main/java/com/critical_hit/loja/lib/lib-0.0.1-SNAPSHOT.jar</systemPath>
+			<systemPath>${project.basedir}/lib/lib-0.0.1-SNAPSHOT.jar</systemPath>
 		</dependency>
 	</dependencies>
 

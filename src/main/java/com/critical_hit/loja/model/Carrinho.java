@@ -1,9 +1,7 @@
 package com.critical_hit.loja.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.critical_hit.lib.enums.StatusCarrinho;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,6 +27,7 @@ public class Carrinho {
 
     LocalDate dataCriacao;
 
+    @OneToMany(mappedBy = "carrinho", cascade = CascadeType.ALL, orphanRemoval = true)
     List<ItemCarrinho> jogos;
 
 }
