@@ -8,7 +8,7 @@ CREATE TABLE carrinho (
 
 CREATE TABLE item_carrinho (
     id BIGSERIAL PRIMARY KEY,
-    carrinho_id INT NOT NULL,
+    carrinho_id BIGINT NOT NULL,
     jogo_id BIGINT NOT NULL,
     preco NUMERIC(10, 2) NOT NULL,
     CONSTRAINT fk_item_carrinho_carrinho 

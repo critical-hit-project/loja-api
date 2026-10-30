@@ -23,6 +23,7 @@ public class Carrinho {
 
     private BigDecimal valorTotal;
 
+    @Enumerated(EnumType.STRING)
     StatusCarrinho status;
 
     LocalDate dataCriacao;
