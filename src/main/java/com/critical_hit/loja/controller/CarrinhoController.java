@@ -27,7 +27,7 @@ public class CarrinhoController {
     }
 
     @GetMapping("/{id}")
-    public CarrinhoResponse buscarPorId(@PathVariable Integer id) {
+    public CarrinhoResponse buscarPorId(@PathVariable Long id) {
         return carrinhoService.buscarPorId(id);
     }
 

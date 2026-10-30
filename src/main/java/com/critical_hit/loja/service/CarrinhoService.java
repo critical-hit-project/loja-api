@@ -67,7 +67,7 @@ public class CarrinhoService {
         }).toList();
     }
 
-    public CarrinhoResponse buscarPorId(Integer id) {
+    public CarrinhoResponse buscarPorId(Long id) {
         return repository.findById(id)
                 .map(converter::convertToDTO)
                 .orElseThrow(() -> new RuntimeException("Carrinho não encontrado para o ID: " + id));

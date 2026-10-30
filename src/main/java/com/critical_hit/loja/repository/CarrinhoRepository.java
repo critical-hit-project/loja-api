@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-public interface CarrinhoRepository extends JpaRepository<Carrinho, Integer> {
+public interface CarrinhoRepository extends JpaRepository<Carrinho, Long> {
 
     List<Carrinho> findAllByStatus(StatusCarrinho status);
 

@@ -17,7 +17,7 @@ import java.util.List;
 public class Carrinho {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     private Long usuarioId;
 
