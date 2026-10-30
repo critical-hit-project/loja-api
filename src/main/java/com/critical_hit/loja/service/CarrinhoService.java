@@ -3,7 +3,6 @@ package com.critical_hit.loja.service;
 import com.critical_hit.lib.dto.jogo.JogoResponse;
 import com.critical_hit.lib.dto.loja.CarrinhoResponse;
 import com.critical_hit.lib.dto.loja.CompraRequest;
-import com.critical_hit.lib.dto.loja.ItemCarrinhoResponse;
 import com.critical_hit.lib.enums.StatusCarrinho;
 import com.critical_hit.loja.converter.DtoConverter;
 import com.critical_hit.loja.model.Carrinho;
@@ -16,7 +15,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -67,6 +65,47 @@ public class CarrinhoService {
             item.setCarrinho(carrinho);
             return item;
         }).toList();
+    }
+
+    public CarrinhoResponse buscarPorId(Integer id) {
+        return repository.findById(id)
+                .map(converter::convertToDTO)
+                .orElseThrow(() -> new RuntimeException("Carrinho não encontrado para o ID: " + id));
+    }
+
+    public List<CarrinhoResponse> listarTodos() {
+        return repository.findAll()
+                .stream()
+                .map(converter::convertToDTO)
+                .toList();
+    }
+
+    public List<CarrinhoResponse> buscarPorUsuario(Long usuarioId) {
+        return repository.findAllByUsuarioId(usuarioId)
+                .stream()
+                .map(converter::convertToDTO)
+                .toList();
+    }
+
+    public List<CarrinhoResponse> buscarPorStatus(StatusCarrinho status) {
+        return repository.findAllByStatus(status)
+                .stream()
+                .map(converter::convertToDTO)
+                .toList();
+    }
+
+    public List<CarrinhoResponse> buscarPorData(LocalDate data) {
+        return repository.findAllByDataCriacao(data)
+                .stream()
+                .map(converter::convertToDTO)
+                .toList();
+    }
+
+    public List<CarrinhoResponse> buscarPorUsuarioEData(Long usuarioId, LocalDate data) {
+        return repository.findAllByUsuarioIdAndDataCriacao(usuarioId, data)
+                .stream()
+                .map(converter::convertToDTO)
+                .toList();
     }
 
     //Metodo auxiliar da criação de carrinho
