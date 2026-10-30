@@ -12,6 +12,14 @@ RUN sed -i 's/\r$//' mvnw && chmod +x mvnw
 
 RUN ./mvnw clean package -DskipTests
 
+# 1. Instala a lib localmente no Maven do container antes de compilar a loja
+RUN ./mvnw install:install-file \
+    -Dfile=lib/lib-0.0.2-SNAPSHOT.jar \
+    -DgroupId=com.critical-hit \
+    -DartifactId=lib \
+    -Dversion=0.0.2-SNAPSHOT \
+    -Dpackaging=jar
+
 FROM eclipse-temurin:21-jre
 WORKDIR /app
 
